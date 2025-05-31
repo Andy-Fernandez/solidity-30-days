@@ -5,10 +5,10 @@ pragma solidity ^0.8.28;
 // import "hardhat/console.sol";
 
 contract Lock {
-    uint public unlockTime;
-    address payable public owner;
+    uint public unlockTime; // tiempo de desbloqueo
+    address payable public owner; // dirección del propietario, es payable para permitir transferencias
 
-    event Withdrawal(uint amount, uint when);
+    event Withdrawal(uint amount, uint when); // evento para registrar retiros
 
     constructor(uint _unlockTime) payable {
         require(
@@ -27,6 +27,7 @@ contract Lock {
         require(block.timestamp >= unlockTime, "You can't withdraw yet");
         require(msg.sender == owner, "You aren't the owner");
 
+        // Si pasa las verificaciones, se registra el evento de retiro
         emit Withdrawal(address(this).balance, block.timestamp);
 
         owner.transfer(address(this).balance);
