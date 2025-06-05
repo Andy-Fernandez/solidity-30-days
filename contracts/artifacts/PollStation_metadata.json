@@ -14,13 +14,13 @@
 				"anonymous": false,
 				"inputs": [
 					{
-						"indexed": true,
-						"internalType": "bool",
-						"name": "pollActive",
-						"type": "bool"
+						"indexed": false,
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
 					}
 				],
-				"name": "PollFinish",
+				"name": "CandidateAdded",
 				"type": "event"
 			},
 			{
@@ -28,13 +28,83 @@
 				"inputs": [
 					{
 						"indexed": true,
-						"internalType": "bool",
-						"name": "pollActive",
-						"type": "bool"
+						"internalType": "address",
+						"name": "voter",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "string",
+						"name": "candidate",
+						"type": "string"
 					}
 				],
-				"name": "PollStart",
+				"name": "Voted",
 				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					}
+				],
+				"name": "addCandidate",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "candidateAt",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "candidateCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					}
+				],
+				"name": "getVotes",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
 			},
 			{
 				"inputs": [
@@ -44,7 +114,7 @@
 						"type": "address"
 					}
 				],
-				"name": "alreadyVoted",
+				"name": "hasVoted",
 				"outputs": [
 					{
 						"internalType": "bool",
@@ -53,32 +123,6 @@
 					}
 				],
 				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "candidates",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "finishPoll",
-				"outputs": [],
-				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -97,38 +141,12 @@
 			{
 				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "timeSeconds",
-						"type": "uint256"
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
 					}
 				],
-				"name": "startPolling",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "timeLimit",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "candiate",
-						"type": "uint256"
-					}
-				],
-				"name": "votar",
+				"name": "vote",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -137,11 +155,22 @@
 		"devdoc": {
 			"kind": "dev",
 			"methods": {},
+			"title": "PollStation v2 – Dynamic list of candidates with simple voting",
 			"version": 1
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {},
+			"methods": {
+				"candidateAt(uint256)": {
+					"notice": "Get candidate name at index"
+				},
+				"candidateCount()": {
+					"notice": "How many candidates exist?"
+				},
+				"getVotes(string)": {
+					"notice": "Get vote total for a name"
+				}
+			},
 			"version": 1
 		}
 	},
@@ -162,11 +191,11 @@
 	},
 	"sources": {
 		"contracts/E3PollStation.sol": {
-			"keccak256": "0x4173456b05d07a16ca36287e314bdabc72d1af4c790031337b8324d91b7f856d",
+			"keccak256": "0xda51b797bac4bb8dbd1eccece28a83804633a052b2d40a6d1b0f6a93d5adaec9",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c1017e685d1ffbb7f47e2c2d066d56a4cb753756934ddf7fc23bc552944cd0a6",
-				"dweb:/ipfs/QmQ4QXPmReiUwjU4U2bttGSYsFgFvSow6PJh2X7mWJs4e2"
+				"bzz-raw://b67630d0b075206b47a291fed5cd39d3e8b362c09813f01cb76525c03088eb1b",
+				"dweb:/ipfs/QmTQ6vxdELwo4HvFJC9WN3o2DNByv22cZwYBeFd1DbvTCM"
 			]
 		}
 	},
