@@ -1,0 +1,72 @@
+{
+	"compiler": {
+		"version": "0.8.22+commit.4fc1097e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "newString",
+						"type": "string"
+					}
+				],
+				"name": "SetInfo",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getInfo",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/eje1.sol": "practica"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/eje1.sol": {
+			"keccak256": "0xf3a9ac5c4d309ab86320a7b90ed9afc5af7440ab3ec55130403cd6007d05b7d6",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7a05ef0e2924fef63524612dd1c255599f7ae11c66ed98c4c64933e50c2bad2f",
+				"dweb:/ipfs/QmWvcFndppiHwXsY92LhUG4EypxdQmaxa8L7YnSzPJzCvD"
+			]
+		}
+	},
+	"version": 1
+}

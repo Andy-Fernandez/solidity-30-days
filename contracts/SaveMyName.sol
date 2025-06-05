@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.28;
 
+// https://www.web3compass.xyz/challenge-calendar
 contract SaveMyName {
     string public name; // ya tenemos por defencto el view
     string public description; // same
