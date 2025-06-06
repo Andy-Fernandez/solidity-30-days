@@ -6,23 +6,60 @@
 	"output": {
 		"abi": [
 			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
 				"inputs": [
 					{
+						"indexed": false,
 						"internalType": "address",
-						"name": "",
+						"name": "winner",
 						"type": "address"
-					}
-				],
-				"name": "balanceOf",
-				"outputs": [
+					},
 					{
+						"indexed": false,
 						"internalType": "uint256",
-						"name": "",
+						"name": "amount",
 						"type": "uint256"
 					}
 				],
-				"stateMutability": "view",
-				"type": "function"
+				"name": "AuctionEnded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "endTime",
+						"type": "uint256"
+					}
+				],
+				"name": "AuctionStarted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "bidder",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "NewHighestBid",
+				"type": "event"
 			},
 			{
 				"inputs": [],
@@ -51,16 +88,10 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					}
-				],
+				"inputs": [],
 				"name": "bid",
 				"outputs": [],
-				"stateMutability": "nonpayable",
+				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
@@ -104,6 +135,25 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "pendingReturns",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "uint256",
 						"name": "timeInSeconds",
 						"type": "uint256"
@@ -126,6 +176,17 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "withdraw",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
 			}
 		],
 		"devdoc": {
@@ -156,11 +217,11 @@
 	},
 	"sources": {
 		"contracts/E4AuctionHouse.sol": {
-			"keccak256": "0xa2a1ba3344e82c0b7b601aa9a18343a82355d417ae443195648e70060cbe710b",
+			"keccak256": "0x3f5043c95c46e034fcf277d3d2fb69e690c50fe2cacb5e189a0dcef0ca548ed5",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c95f14b945c2b93387a27c722b114fc686da15589f8a672fc48da15c685dd770",
-				"dweb:/ipfs/QmcW5oh7WZjiazF28n9qvyv7yeBkpy57rtWc6rBfv7soVa"
+				"bzz-raw://2c3237cc016834432b7dbfb5bf0f3eb05eabc53e71aff3a3a0370bcd219ab1f3",
+				"dweb:/ipfs/QmPqFDL7K4ivbZhDFsGg9vxk2W9oqXDdqNYUnYh1DMVNfb"
 			]
 		}
 	},
