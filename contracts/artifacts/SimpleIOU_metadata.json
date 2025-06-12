@@ -6,6 +6,11 @@
 	"output": {
 		"abi": [
 			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
 				"anonymous": false,
 				"inputs": [
 					{
@@ -29,6 +34,19 @@
 				],
 				"name": "BorrowEvent",
 				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_newFriend",
+						"type": "address"
+					}
+				],
+				"name": "addFriend",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			},
 			{
 				"inputs": [
@@ -80,7 +98,7 @@
 						"type": "address"
 					}
 				],
-				"name": "borrows",
+				"name": "debts",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -101,22 +119,49 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address",
+						"internalType": "uint256",
 						"name": "",
-						"type": "address"
-					},
+						"type": "uint256"
+					}
+				],
+				"name": "friendsList",
+				"outputs": [
 					{
 						"internalType": "address",
 						"name": "",
 						"type": "address"
 					}
 				],
-				"name": "lendings",
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "isFriend",
 				"outputs": [
 					{
-						"internalType": "uint256",
+						"internalType": "bool",
 						"name": "",
-						"type": "uint256"
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -164,11 +209,11 @@
 	},
 	"sources": {
 		"contracts/E7SimpleIOU.sol": {
-			"keccak256": "0x418246326e333bf257f8257e3bcf907377e8d9ab18720a99a114a61b657ba43d",
+			"keccak256": "0x2ba3f5837bbbb7629d4371be5c728771092a942216b9593298dc22b3b3ae75aa",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://a1e8af0dc2929be742d9ce75f390dcee52a090dce78d4a92ca4d7c76c943a65c",
-				"dweb:/ipfs/QmWmnaJavGZbwS34NMjPGj7sHusKKunFwC3mLPjKQhG1p5"
+				"bzz-raw://e9f1fe2d4e953ad6f3a607be5879719fb398ecfa201b6e28b4fa9164a9c58f23",
+				"dweb:/ipfs/QmdH9XZtBcw1TeTFnD9ir1HUTVkQwravh9N8a8REjE7Dvt"
 			]
 		}
 	},
