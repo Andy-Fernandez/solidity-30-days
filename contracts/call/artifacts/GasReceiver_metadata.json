@@ -1,0 +1,76 @@
+{
+	"compiler": {
+		"version": "0.8.17+commit.8df45f5f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "gasLeft",
+						"type": "uint256"
+					}
+				],
+				"name": "GasReceived",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "getBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/call/GasReceiver.sol": "GasReceiver"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/call/GasReceiver.sol": {
+			"keccak256": "0xf7ae173c2f49e7470a215b935ebaaf4251c2baa95ea4dd1ea460d3e1973338e4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e92b35298683190b6044294bcf6183a4196b81d43648a924311ce3a6536457cc",
+				"dweb:/ipfs/QmVa6wvtA2JGoxMoCEbF89F1RLrCw9x5pLAb39sZSGmcLg"
+			]
+		}
+	},
+	"version": 1
+}
