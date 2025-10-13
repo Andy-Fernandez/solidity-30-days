@@ -12,21 +12,23 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 */
 
 /*  TODO:
-    - When somebody claim, the have to be registrated into a mapping. 
     - Use constant for COOLDOWN anda CLAIM_AMOUNT 
     - Force to claime justo for msg.sender (why?) 
         (some one can claime for many addresses and abuse, maybe set a time per msg.sender, like 5)
+    - When somebody claim, the have to be registrated into a mapping. 
 */
 
 contract MyFaucet {
     mapping (address => bool) public donor; 
     mapping (address => uint) public coolDown;
+    uint32 public constant COOLDOWN = 1 days;
+    uint64 public CLAIM_AMOUNT = 0.05 ether;  
 
     event Sent(address recipient);
 
     // Anybudy can donete to this contract.    
     function donate() external payable {
-        require(msg.value > 0.05 ether, "ETH is require an least 0.05 ether.");
+        require(msg.value > CLAIM_AMOUNT, "ETH is require an least 0.05 ether.");
         donor[msg.sender] = true;
     }
 
@@ -34,13 +36,13 @@ contract MyFaucet {
     function claim(address payable recipient) 
         external 
     {   
-        require(address(this).balance >= 0.05 ether, "Not enough ether in this contract");
+        require(address(this).balance >= CLAIM_AMOUNT, "Not enough ether in this contract");
         require(recipient != address(0), "Invalid address");
-        require(block.timestamp >= coolDown[recipient] + 1 days, "That address recently claimed ETH");
+        require(block.timestamp >= coolDown[recipient] + COOLDOWN, "That address recently claimed ETH");
 
         coolDown[recipient] = block.timestamp; // 1st - up date the state!
 
-        (bool sent, ) = recipient.call{value: 0.05 ether}(""); // 2nd - external interaction
+        (bool sent, ) = recipient.call{value: CLAIM_AMOUNT}(""); // 2nd - external interaction
         require(sent, "Failed to send ETH");
 
         emit Sent(recipient); // 3rd - update the state
@@ -52,7 +54,7 @@ contract MyFaucet {
         view 
         returns 
     (bool) {        
-        return block.timestamp >= coolDown[msg.sender] + 1 days;
+        return block.timestamp >= coolDown[msg.sender] + COOLDOWN;
     }
 
     // Allow contract to recive ETH 
