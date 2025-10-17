@@ -9,10 +9,10 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
     - Donors are stored in a mapping
     - Anyone can send ETH to any address
     - And want for the cooldown. (24 hrs)
+    - Use constant for COOLDOWN anda CLAIM_AMOUNT 
 */
 
 /*  TODO:
-    - Use constant for COOLDOWN anda CLAIM_AMOUNT 
     - Force to claime justo for msg.sender (why?) 
         (some one can claime for many addresses and abuse, maybe set a time per msg.sender, like 5)
     - When somebody claim, the have to be registrated into a mapping. 

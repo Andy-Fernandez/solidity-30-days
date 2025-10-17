@@ -13,6 +13,8 @@ contract uints {
     uint128 public myUint128;
     uint256 public myUint256;
 
-    // uint8 public constant COOLDOWN = 1 days; // 24*60*60 = 86,400 seconds 
+    // uint8 public cooldown = 1 days; // 24*60*60 = 86,400 seconds 
 
+    // CONTANTS:
+    // 
 }
