@@ -7,11 +7,19 @@ pragma solidity ^0.8.22;
     - Anyone can send ETH to any address (via claim)
     - Cooldown: 24 hours
     - Use constants for COOLDOWN, CLAIM_AMOUNT and MIN_DONATION
+    - Add ownership
+    - Ownership can pause the faucet
+
+    TODO:
+    - Add modifiers
+    - Use pausable in all the functions to stop claimings.
 */
 
 contract MyFaucet {
     mapping(address => bool) public donor;
     mapping(address => uint256) public cooldown;
+    address owner;
+    bool public paused;
 
     uint32  public constant COOLDOWN      = 1 days;
     uint256 public constant CLAIM_AMOUNT  = 0.05 ether;
@@ -19,6 +27,16 @@ contract MyFaucet {
 
     event Donated(address indexed donor, uint256 amount);
     event Claimed(address indexed recipient, uint256 amount);
+
+    // === modifieres ====
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Only owner");
+        _;
+    }
+
+    constructor() {
+        owner = msg.sender;
+    }
 
     // Anybody can donate to this contract.
     function donate() external payable {
@@ -48,6 +66,16 @@ contract MyFaucet {
     function canClaim() external view returns (bool) {
         return block.timestamp >= cooldown[msg.sender] + COOLDOWN;
     }
+
+    // Pause the faucet 
+    function switchFaucetState() 
+        external 
+        onlyOwner
+        {
+            paused = !paused;
+    }
+
+
 
     // Allow contract to receive ETH (enforce minimum and mark donor).
     receive() external payable {
