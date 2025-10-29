@@ -13,6 +13,7 @@ pragma solidity ^0.8.22;
     TODO:
     - Add modifiers
     - Use pausable in all the functions to stop claimings.
+        - Take a look if its apply in each necesary place
 */
 
 contract MyFaucet {
@@ -34,8 +35,14 @@ contract MyFaucet {
         _;
     }
 
+    modifier isPause() {
+        require(paused, "Contract is pause");
+        _;
+    }
+
     constructor() {
         owner = msg.sender;
+
     }
 
     // Anybody can donate to this contract.
@@ -46,7 +53,7 @@ contract MyFaucet {
     }
 
     // Ask for some ETH.
-    function claim(address payable recipient) external {
+    function claim(address payable recipient) external isPause {
         require(address(this).balance >= CLAIM_AMOUNT, "Not enough ETH in contract");
         require(recipient != address(0), "Invalid address");
         require(block.timestamp >= cooldown[recipient] + COOLDOWN, "Address is on cooldown");
@@ -63,7 +70,7 @@ contract MyFaucet {
     }
 
     // Check if msg.sender can claim now.
-    function canClaim() external view returns (bool) {
+    function canClaim() external view returns (bool)  {
         return block.timestamp >= cooldown[msg.sender] + COOLDOWN;
     }
 
